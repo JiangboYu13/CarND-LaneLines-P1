@@ -31,7 +31,7 @@ My algorithm consists of the following steps:
 
 ![color_filter][color_filter]
 
-To better filter out unwanted colored pixels from image, the original image is first converted to HSL (Hue Saturation and Value) color domain. Then extract white (with high Value and low Saturation) and yellow (with high Value and Hue between 20 and 30) colored pixels; Binarize image by setting successfully passed pixel to (255, 255, 255) and the rest t0 (0, 0, 0)
+To better filter out unwanted colored pixels from image, the original image is first converted to HSL (Hue Saturation and Value) color domain. Then extract white (with high Value and low Saturation) and yellow (with high Value and Hue between 20 and 30) colored pixels; Binarize image by setting successfully passed pixel to (255, 255, 255) and the rest to (0, 0, 0)
 
 * **Convert image to grayscale**
 
@@ -59,8 +59,8 @@ To better filter out unwanted colored pixels from image, the original image is f
 ![fused][fused]
 1. The theta and rho of each found lines are calculated
 2. Remove lines of unwanted theta value (vertical and horizontal line for example)
-3. average the theta and rho of similar line segements;
-4. calculate the x-coordinates for two end of each line (wiith y-coordinates take value of height and upper boundary of ROI)
+3. average the theta and rho of similar line segements as the theta and rho of combined line;
+4. calculate the x-coordinates for two end of each line (with y-coordinates take value of height and upper boundary of ROI)
 
 
 * **Final Result**
@@ -70,9 +70,9 @@ To better filter out unwanted colored pixels from image, the original image is f
 
 ### 2. Identify potential shortcomings with your current pipeline
 
-When choose parameters for algorithm, I have to trade-off between the identification rate and identification precision. For example, by increasing the *threshold* of hough algorithm, there will be less probability to take other objects other than traffic lanes as lanes. However, it increases the probability of missing traffic lanes. My implementation has a reasonable performance on *solidWhiteRight.mp4* and *solidYellowLeft.mp4* but occasionally will miss lanes in *challenge.mp4*, especially these frames taken under tree shadows.
+When choose parameters for algorithm, I have to make a trade-off between the identification rate and identification precision. For example, by increasing the *threshold* of hough algorithm, there will be less probability to take other objects other than traffic lanes as lanes. However, it increases the probability of missing traffic lanes. My implementation has a reasonable performance on *solidWhiteRight.mp4* and *solidYellowLeft.mp4* but occasionally will miss lanes in *challenge.mp4*, especially these frames taken under tree shadows.
 
 ### 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to implement a generalized hough transform for lane detection. Traditional hough transform can deal with straight line but not curve lines, which is common on road;
+A possible improvement would be to implement a generalized hough transform for lane detection. Traditional hough transform can deal with straight line well but not curve lines, which are common on road;
 
