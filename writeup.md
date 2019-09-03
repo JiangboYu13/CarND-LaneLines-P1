@@ -27,40 +27,43 @@ The goals / steps of this project are the following:
 
 My algorithm consists of the following steps: 
 
-* Apply color filter to extract white and yellow color;
+* **Apply color filter to extract white and yellow color**
 
 ![color_filter][color_filter]
+
 To better filter out unwanted colored pixels from image, the original image is first converted to HSL (Hue Saturation and Value) color domain. Then extract white (with high Value and low Saturation) and yellow (with high Value and Hue between 20 and 30) colored pixels; Binarize image by setting successfully passed pixel to (255, 255, 255) and the rest t0 (0, 0, 0)
 
-* Convert image to grayscale;
+* **Convert image to grayscale**
 
 ![grayscale][grayscale]
 
 
-* Apply Gaussian filter with kernle size 5;
+* **Apply Gaussian filter with kernle size 5**
 
 ![gaussian][gaussian]
 
-* Apply Canny edge filter withlow_threshold 50 and high_threshold 150;
+* **Apply Canny edge filter withlow_threshold 50 and high_threshold 150**
 
 ![canny][canny]
 
-* Apply Region of Interest filter (the vertices of ROI are based on ratios of height and width rather than fixed values);
+* **Apply Region of Interest filter (the vertices of ROI are based on ratios of height and width rather than fixed values)**
 
 ![roi][roi]
 
-* Apply Hough lane detection algorithm with rho=1, theta=pi/180, threshold = 30, min_line_length = 20,  max_line_gap = 5;
+* **Apply Hough lane detection algorithm with rho=1, theta=pi/180, threshold = 30, min_line_length = 20,  max_line_gap = 5**
 
 ![hough][hough]
 
-* Filter out unwanted lines and average and/or extrapolate the line segments; (This part is what I've done for modifying draw_lines)
-	1. The theta and rho of each found lines are calculated
-	2. Remove lines of unwanted theta value (vertical and horizontal line for example)
-	3. average the theta and rho of similar line segements;
-	4. calculate the x-coordinates for two end of each line (wiith y-coordinates take value of height and upper boundary of ROI)
-![fused][fused]
+* **Filter out unwanted lines and average and/or extrapolate the line segments; (This part is what I've done for modifying draw_lines)**
 
-* Final Result
+![fused][fused]
+1. The theta and rho of each found lines are calculated
+2. Remove lines of unwanted theta value (vertical and horizontal line for example)
+3. average the theta and rho of similar line segements;
+4. calculate the x-coordinates for two end of each line (wiith y-coordinates take value of height and upper boundary of ROI)
+
+
+* **Final Result**
 
 ![weighted_overlap][weighted_overlap]
 
