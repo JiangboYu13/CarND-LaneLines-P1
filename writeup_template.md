@@ -11,21 +11,53 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/grayscale.jpg "Grayscale"
-
+[color_filter]: ./test_images_output_color_filtered/solidYellowCurve2.jpg 
+[grayscale]: ./test_images_output_gray/solidYellowCurve2.jpg 
+[gaussian]: ./test_images_output_gauss/solidYellowCurve2.jpg 
+[canny]: ./test_images_output_canny/solidYellowCurve2.jpg 
+[roi]: ./test_images_output_roi/solidYellowCurve2.jpg 
+[hough]: ./test_images_output_seg/solidYellowCurve2.jpg
+[fused]: ./test_images_output_final/solidYellowCurve2.jpg
+[weighted_overlap]: ./test_images_output/solidYellowCurve2.jpg
 ---
 
 ### Reflection
 
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
+My algorithm consists of the following steps: 
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
+* Apply color filter to extract white and yellow color;
 
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
+![color_filter][color_filter]
 
-![alt text][image1]
+* Convert image to grayscale;
+
+![grayscale][grayscale]
+
+* Apply Gaussian filter;
+
+![gaussian][gaussian]
+
+* Apply Canny edge filter;
+
+![canny][canny]
+
+* Apply Region of Interest filter;
+
+![roi][roi]
+
+* Apply Hough lane detection algorithm;
+
+![hough][hough]
+
+* Filter out unwanted lines and average and/or extrapolate the line segments;
+
+![fused][fused]
+
+* Final Result
+
+![weighted_overlap][weighted_overlap]
 
 
 ### 2. Identify potential shortcomings with your current pipeline
